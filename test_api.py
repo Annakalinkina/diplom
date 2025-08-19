@@ -1,9 +1,6 @@
 import requests
 import allure
-
-
-headers = {"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 YaBrowser/25.4.0.0 Safari/537.36","authorization":"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3VzZXItcmlnaHQiLCJzdWIiOjIyMDYwODYwLCJpYXQiOjE3NDkwNjIwNjMsImV4cCI6MTc0OTA2NTY2MywidHlwZSI6MjB9.wUsxvp85D9ryit88DcEl6igEr2CjJbHbIVUgI74Ycc4"}
-base_url = "https://web-gate.chitai-gorod.ru/api/v2/"
+from config import *
 
 
 @allure.epic("API Тестирование")
@@ -33,10 +30,10 @@ def test_api_get_categories():
     assert resp.status_code == 200
 
 
-    @allure.epic("API Тестирование")
-    @allure.feature("Поиск книг")
-    @allure.title("Тестирование поиска с пустым запросом")
-    @allure.description("Проверка, что API возвращает ошибку при поиске с пустым запросом.")
-    def test_negative_api_empty_query():
-        resp = requests.get(f"{base_url}search/product?phrase=", headers=headers)
-        assert resp.status_code == 400
+@allure.epic("API Тестирование")
+@allure.feature("Поиск книг")
+@allure.title("Тестирование поиска с пустым запросом")
+@allure.description("Проверка, что API возвращает ошибку при поиске с пустым запросом.")
+def test_negative_api_empty_query():
+    resp = requests.get(f"{base_url}search/product?phrase=", headers=headers)
+    assert resp.status_code == 400

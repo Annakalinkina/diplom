@@ -2,6 +2,7 @@ import allure
 import pytest
 from pages.main_page import MainPage
 
+
 @allure.epic("UI Тестирование")
 @allure.feature("Поиск книжной информации")
 class TestBookSearch:
@@ -30,6 +31,7 @@ class TestBookSearch:
             main_page.open()
             main_page.search_book("$$$тайна лисьей норы")
             assert "показывает результаты по запросу  «$$$тайна лисьей норы» , найдено" in main_page.get_search_results_text()
+
 
             @allure.title("Поиск книги с неполным названием ")
             @allure.description("Тест проверяет поиск книги с неполным нозванием")

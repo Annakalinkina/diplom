@@ -16,8 +16,9 @@ class MainPage:
         search_field.clear()
         search_field.send_keys(query)
         self.driver.find_element(By.CLASS_NAME, "search-form__icon-search").click()
-        WebDriverWait(self.driver, 40).until(
-            EC.text_to_be_present_in_element((By.CLASS_NAME, "search-title"), query))
+        WebDriverWait(self.driver, 20).until(
+            EC.text_to_be_present_in_element(
+                (By.CLASS_NAME, "search-title"), query))
 
     def get_search_results_text(self):
         return self.driver.find_element(By.CLASS_NAME, "search-title").text
